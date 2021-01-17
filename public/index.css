@@ -1,8 +1,6 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: Roboto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: white;
@@ -31,4 +29,10 @@ code {
   );
   height: 100vh;
   display: flex;
+}
+
+@font-face {
+  src: url("fonts/Roboto-Regular.ttf") format("truetype");
+  font-display: swap;
+  font-family: Roboto;
 }
