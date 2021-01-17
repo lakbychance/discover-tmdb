@@ -20,7 +20,7 @@ const MediaContainer = () => {
 
   return (
     <>
-      {isResolved && media?.list?.length && (
+      {isResolved && media?.list?.length > 0 && (
         <Layout>
           {media?.list?.map((mediaItem: MediaItem) => {
             const imagePath = mediaItem.poster_path
