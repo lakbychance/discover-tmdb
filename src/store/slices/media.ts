@@ -4,6 +4,7 @@ import {
   DISCOVER_ENDPOINT,
   MediaCategory,
   MovieSortQueryMap,
+  QUERY_ENDPOINT,
   TRENDING_ENDPOINT,
   TVSortQueryMap,
 } from "../../config/constants";
@@ -85,6 +86,13 @@ export const fetchMedia = () => (dispatch: any, getState: any) => {
   const { media } = getState();
   const mediaUrl = urlBuilder(media);
   axios.get(mediaUrl).then(({ data }: any) => {
+    dispatch(setList(data.results));
+  });
+};
+
+export const fetchMediaByQuery = (query: string) => (dispatch: any) => {
+  const queryUrl = `${QUERY_ENDPOINT}/?api_key=${process.env.REACT_APP_API_KEY}&query=${query}`;
+  axios.get(queryUrl).then(({ data }: any) => {
     dispatch(setList(data.results));
   });
 };

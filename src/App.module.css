@@ -17,8 +17,8 @@
 .rightContainer {
   display: flex;
   justify-content: center;
-  background: rgb(16, 20, 24);
-  box-shadow: -4px 0px 12px 0px #040404;
+  background: var(--color-secondary-bg);
+  box-shadow: -4px 0px 12px 0px var(--color-primary-shadow);
   height: 99%;
   margin: auto;
   width: 20%;

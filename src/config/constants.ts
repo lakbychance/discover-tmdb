@@ -19,3 +19,4 @@ export const TVSortQueryMap = {
 
 export const DISCOVER_ENDPOINT = "https://api.themoviedb.org/3/discover";
 export const TRENDING_ENDPOINT = "https://api.themoviedb.org/3/trending";
+export const QUERY_ENDPOINT = "https://api.themoviedb.org/3/search/multi";

@@ -22,7 +22,11 @@ const MediaContainer = () => {
             return (
               <MediaCard
                 src={mediaItem.poster_path}
-                title={mediaItem.original_title ?? mediaItem.original_name}
+                title={
+                  mediaItem.original_title ??
+                  mediaItem.original_name ??
+                  mediaItem.name
+                }
               />
             );
           })}

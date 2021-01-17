@@ -1,0 +1,11 @@
+.searchbar {
+  display: flex;
+  align-items: center;
+}
+.searchField {
+  color: var(--color-primary-text);
+  margin-left: 5px;
+}
+.searchIcon {
+  cursor: pointer;
+}

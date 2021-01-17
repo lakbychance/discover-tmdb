@@ -15,7 +15,9 @@ code {
 :root {
   --color-primary-text: white;
   --color-primary-bg: rgb(21, 25, 29);
+  --color-primary-shadow: #040404;
   --color-secondary-text: #19b2fd;
+  --color-secondary-bg: rgb(16, 20, 24);
   --color-ternary-text: grey;
   --color-rating: yellow;
 }
