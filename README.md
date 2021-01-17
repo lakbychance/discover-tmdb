@@ -1,5 +1,7 @@
 # Discover
 
+![App Image](https://github.com/lapstjup/discover-tmdb/blob/main/public/discover-tmdb.png)
+
 This [app](https://discover-tmdb.netlify.app/) makes use of the [themoviedb](https://developers.themoviedb.org/3) API to implement media categorization, filteration and search using React and Redux.
 
 # Installing
