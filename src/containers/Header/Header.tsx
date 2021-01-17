@@ -1,12 +1,12 @@
 import React from "react";
-import clsx from "clsx";
 import styles from "./Header.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { MediaCategory } from "../../config/constants";
-import { MediaCategoryButton, Search } from "../../components";
-import { setCategory } from "../../store/slices/media";
+import { MediaCategory } from "config/constants";
+import { MediaCategoryButton, Search } from "components";
+import { setCategory } from "store/slices/media";
+import { AppRootState } from "store";
 const Header = () => {
-  const media = useSelector((state: any) => state.media);
+  const media = useSelector((state: AppRootState) => state.media);
   const dispatch = useDispatch();
   const { category } = media;
 

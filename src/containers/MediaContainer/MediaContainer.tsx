@@ -1,11 +1,14 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Layout, MediaCard } from "../../components";
-import { fetchMedia } from "../../store/slices/media";
+import { Layout, MediaCard } from "components";
+import { MediaItem } from "config/interface";
+import { AppRootState } from "store";
+import { fetchMedia } from "store/slices/media";
 import styles from "./MediaContainer.module.css";
+import { IMAGE_ENDPOINT } from "config/constants";
 
 const MediaContainer = () => {
-  const media = useSelector((state: any) => state.media);
+  const media = useSelector((state: AppRootState) => state.media);
   const dispatch = useDispatch();
   const { category, filter } = media;
   const { mediaType } = filter;
@@ -18,10 +21,13 @@ const MediaContainer = () => {
     <>
       {media?.list?.length ? (
         <Layout>
-          {media?.list?.map((mediaItem: any) => {
+          {media?.list?.map((mediaItem: MediaItem) => {
+            const imagePath = mediaItem.poster_path
+              ? `${IMAGE_ENDPOINT}${mediaItem.poster_path}`
+              : "";
             return (
               <MediaCard
-                src={mediaItem.poster_path}
+                src={imagePath}
                 title={
                   mediaItem.original_title ??
                   mediaItem.original_name ??

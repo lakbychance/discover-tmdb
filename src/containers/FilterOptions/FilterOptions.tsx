@@ -1,11 +1,13 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { CSSProperties, useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import Rating from "@material-ui/lab/Rating";
 import Select, { ValueType } from "react-select";
 import { useDispatch, useSelector } from "react-redux";
-import { setFilter } from "../../store/slices/media";
+import { setFilter } from "store/slices/media";
 import styles from "./FilterOptions.module.css";
-import { MediaCategory } from "../../config/constants";
+import { MediaCategory } from "config/constants";
+import { AppRootState } from "store";
+import { GenreForState, GenreFromResponse } from "config/interface";
 
 const mediaTypesList = [
   {
@@ -26,22 +28,33 @@ const getYearList = (from: number, to: number) => {
 };
 const yearList = getYearList(1900, new Date().getFullYear());
 const dropdownStyle = {
-  control: (base: any) => ({
+  control: (base: CSSProperties) => ({
     ...base,
     background: "transparent",
     border: "1px solid grey",
   }),
-  indicatorSeparator: (provided: any) => ({ ...provided, display: "none" }),
-  dropdownIndicator: (provided: any) => ({ ...provided, width: "30px" }),
-  singleValue: (provided: any) => ({
+  indicatorSeparator: (provided: CSSProperties) => ({
+    ...provided,
+    display: "none",
+  }),
+  dropdownIndicator: (provided: CSSProperties) => ({
+    ...provided,
+    width: "30px",
+  }),
+  singleValue: (provided: CSSProperties) => ({
     ...provided,
     color: "white",
     width: "80%",
   }),
 };
 const FilterOptions = () => {
-  const media = useSelector((state: any) => state.media);
-  const [genreList, setGenreList] = useState<any>([]);
+  const media = useSelector((state: AppRootState) => state.media);
+  const [genreList, setGenreList] = useState<GenreForState[]>(() => [
+    {
+      label: "All",
+      value: "All",
+    },
+  ]);
   const dispatch = useDispatch();
   const { category, filter } = media;
   const { genre, mediaType, rating } = filter;
@@ -73,12 +86,13 @@ const FilterOptions = () => {
         `https://api.themoviedb.org/3/genre/${mediaType}/list?api_key=${process.env.REACT_APP_API_KEY}`
       )
       .then(({ data }) => {
-        const genres = data.genres.map((genre: any) => ({
-          label: genre.name,
-          value: genre.id,
-        }));
-        genres.unshift({ label: "All", value: "All" });
-        setGenreList(genres);
+        const genres: GenreForState[] = data.genres.map(
+          (genre: GenreFromResponse) => ({
+            label: genre.name,
+            value: genre.id,
+          })
+        );
+        setGenreList((prevGenreList) => [...prevGenreList, ...genres]);
       });
   }, [mediaType]);
 
@@ -140,7 +154,7 @@ const FilterOptions = () => {
       <span>Rating</span>
       <Rating
         name="simple-controlled"
-        value={rating / 2}
+        value={parseInt(rating) / 2}
         onChange={(event, newValue) => {
           const rating = newValue && newValue * 2;
           dispatch(setFilter({ rating }));

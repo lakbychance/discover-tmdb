@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import SearchIcon from "@material-ui/icons/Search";
 import { makeStyles, TextField } from "@material-ui/core";
-import styles from "./Search.module.css";
-import { fetchMediaByQuery } from "../../store/slices/media";
+import { fetchMediaByQuery } from "store/slices/media";
 import { useDispatch } from "react-redux";
+
+import styles from "./Search.module.css";
 
 const useStyles = makeStyles({
   input: {
@@ -20,15 +21,15 @@ const Search = () => {
   const dispatch = useDispatch();
   const classes = useStyles();
 
-  const handleEnter = (event: any) => {
+  const handleEnter = (event: React.KeyboardEvent) => {
     const isEnter = event.key === "Enter";
     if (isEnter) {
       searchQuery();
     }
   };
 
-  const handleQuery = (event: any) => {
-    setQuery(event.target.value);
+  const handleQuery = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setQuery(event.currentTarget.value);
   };
 
   const searchQuery = () => {

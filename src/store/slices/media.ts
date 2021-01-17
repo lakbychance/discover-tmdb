@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, Dispatch } from "@reduxjs/toolkit";
 import axios from "axios";
 import {
   DISCOVER_ENDPOINT,
@@ -7,25 +7,21 @@ import {
   QUERY_ENDPOINT,
   TRENDING_ENDPOINT,
   TVSortQueryMap,
-} from "../../config/constants";
+} from "config/constants";
+import { GenreForState, MediaItem } from "config/interface";
 
 interface FilterState {
-  genre: Genre;
+  genre: GenreForState;
   mediaType: string;
   fromYear: string;
   toYear: string;
   rating: string;
 }
 
-interface Genre {
-  value: string;
-  label: string;
-}
-
 interface MediaState {
   category: string;
   filter: FilterState;
-  list: any[];
+  list: MediaItem[];
 }
 
 export const mediaSlice = createSlice({
@@ -82,17 +78,20 @@ const urlBuilder = (media: MediaState) => {
   return url;
 };
 
-export const fetchMedia = () => (dispatch: any, getState: any) => {
+export const fetchMedia = () => (
+  dispatch: Dispatch,
+  getState: () => { media: MediaState }
+) => {
   const { media } = getState();
   const mediaUrl = urlBuilder(media);
-  axios.get(mediaUrl).then(({ data }: any) => {
+  axios.get(mediaUrl).then(({ data }) => {
     dispatch(setList(data.results));
   });
 };
 
-export const fetchMediaByQuery = (query: string) => (dispatch: any) => {
+export const fetchMediaByQuery = (query: string) => (dispatch: Dispatch) => {
   const queryUrl = `${QUERY_ENDPOINT}/?api_key=${process.env.REACT_APP_API_KEY}&query=${query}`;
-  axios.get(queryUrl).then(({ data }: any) => {
+  axios.get(queryUrl).then(({ data }) => {
     dispatch(setList(data.results));
   });
 };

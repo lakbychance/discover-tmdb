@@ -13,9 +13,10 @@
   width: 100%;
 }
 .noImageAvailable {
+  background: var(--color-secondary-bg);
+  color: var(--color-primary-text);
   height: 90%;
   width: 100%;
-  background: whitesmoke;
   display: flex;
   text-align: center;
   justify-content: center;

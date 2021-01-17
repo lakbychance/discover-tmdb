@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import React, { useState } from "react";
 import MenuIcon from "@material-ui/icons/Menu";
-import { FilterOptions, Header, MediaContainer } from "./containers";
+import { FilterOptions, Header, MediaContainer } from "containers";
 import styles from "./App.module.css";
 
 function App() {
