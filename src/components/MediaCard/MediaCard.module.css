@@ -1,0 +1,40 @@
+.mediaCard {
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 350px;
+  padding: 15px;
+}
+.mediaImage {
+  min-height: 90%;
+  max-height: 90%;
+  width: 100%;
+}
+.noImageAvailable {
+  height: 90%;
+  width: 100%;
+  background: whitesmoke;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+.title {
+  color: var(--color-secondary-text);
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin-top: 5px;
+  max-width: 150px;
+  white-space: nowrap;
+}
+
+@media only screen and (max-width: 900px) {
+  .mediaCard {
+    width: 250px;
+    margin: auto;
+  }
+}

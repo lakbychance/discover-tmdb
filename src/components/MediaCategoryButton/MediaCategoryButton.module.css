@@ -1,0 +1,10 @@
+.mediaCategory {
+  background: transparent;
+  border: none;
+  color: var(--color-primary-text);
+  cursor: pointer;
+  font-weight: bold;
+}
+.activeCategory {
+  color: var(--color-secondary-text);
+}

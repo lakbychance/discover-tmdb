@@ -1,0 +1,17 @@
+.header {
+  display: flex;
+  align-items: center;
+  color: var(--color-primary-text);
+  height: 30px;
+  padding: 0px 15px;
+  text-align: center;
+  justify-content: space-between;
+}
+.title {
+  font-size: 1.5em;
+}
+@media only screen and (max-width: 750px) {
+  .header {
+    flex-direction: column;
+  }
+}

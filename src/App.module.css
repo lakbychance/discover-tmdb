@@ -1,0 +1,53 @@
+.appContainer {
+  background: var(--color-primary-bg);
+  border-radius: 5px;
+  display: flex;
+  height: 85vh;
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+  width: 85vw;
+}
+
+.leftContainer {
+  margin: 30px 30px 0 30px;
+  width: 80%;
+}
+
+.rightContainer {
+  display: flex;
+  justify-content: center;
+  background: rgb(16, 20, 24);
+  box-shadow: -4px 0px 12px 0px #040404;
+  height: 99%;
+  margin: auto;
+  width: 20%;
+}
+.toggleSideBarButton {
+  display: none !important;
+}
+
+@media only screen and (max-width: 1100px) {
+  .leftContainer {
+    width: calc(100% - 60px);
+  }
+  .rightContainer {
+    position: absolute;
+    right: -250px;
+    width: 250px;
+    height: 100%;
+    transition: ease-out 0.2s;
+  }
+  .openSideBar {
+    transition: ease-in 0.2s;
+    right: 0;
+  }
+  .toggleSideBarButton {
+    color: var(--color-primary-text);
+    cursor: pointer;
+    display: block !important;
+    position: absolute;
+    right: 0;
+    z-index: 1;
+  }
+}

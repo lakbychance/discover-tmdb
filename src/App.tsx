@@ -1,24 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import clsx from "clsx";
+import React, { useState } from "react";
+import MenuIcon from "@material-ui/icons/Menu";
+import { FilterOptions, Header, MediaContainer } from "./containers";
+import styles from "./App.module.css";
 
 function App() {
+  const [isSideBarOpen, toggleSideBar] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={styles.appContainer}>
+      <section className={styles.leftContainer}>
+        <Header />
+        <MediaContainer />
+      </section>
+      <MenuIcon
+        className={styles.toggleSideBarButton}
+        onClick={() => toggleSideBar(!isSideBarOpen)}
+      />
+      <aside
+        className={clsx(
+          styles.rightContainer,
+          isSideBarOpen && styles.openSideBar
+        )}
+      >
+        <FilterOptions />
+      </aside>
     </div>
   );
 }
