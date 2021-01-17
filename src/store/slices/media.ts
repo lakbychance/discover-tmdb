@@ -5,10 +5,12 @@ import {
   MediaCategory,
   MovieSortQueryMap,
   QUERY_ENDPOINT,
+  Status,
   TRENDING_ENDPOINT,
   TVSortQueryMap,
 } from "config/constants";
 import { GenreForState, MediaItem } from "config/interface";
+import StateManager from "react-select";
 
 interface FilterState {
   genre: GenreForState;
@@ -22,6 +24,7 @@ interface MediaState {
   category: string;
   filter: FilterState;
   list: MediaItem[];
+  status: Status;
 }
 
 export const mediaSlice = createSlice({
@@ -36,6 +39,7 @@ export const mediaSlice = createSlice({
       rating: "5",
     },
     list: [],
+    status: Status.IDLE,
   },
   reducers: {
     setCategory: (state: MediaState, action) => {
@@ -49,6 +53,10 @@ export const mediaSlice = createSlice({
     setList: (state: MediaState, action) => {
       const list = action.payload;
       state.list = list;
+    },
+    setStatus: (state: MediaState, action) => {
+      const status = action.payload;
+      state.status = status;
     },
   },
 });
@@ -84,17 +92,26 @@ export const fetchMedia = () => (
 ) => {
   const { media } = getState();
   const mediaUrl = urlBuilder(media);
+  dispatch(setStatus(Status.PENDING));
   axios.get(mediaUrl).then(({ data }) => {
+    dispatch(setStatus(Status.RESOLVED));
     dispatch(setList(data.results));
   });
 };
 
 export const fetchMediaByQuery = (query: string) => (dispatch: Dispatch) => {
   const queryUrl = `${QUERY_ENDPOINT}/?api_key=${process.env.REACT_APP_API_KEY}&query=${query}`;
+  dispatch(setStatus(Status.PENDING));
   axios.get(queryUrl).then(({ data }) => {
+    dispatch(setStatus(Status.RESOLVED));
     dispatch(setList(data.results));
   });
 };
 
-export const { setCategory, setFilter, setList } = mediaSlice.actions;
+export const {
+  setCategory,
+  setFilter,
+  setList,
+  setStatus,
+} = mediaSlice.actions;
 export default mediaSlice.reducer;

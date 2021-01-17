@@ -2,3 +2,6 @@
   color: var(--color-primary-text);
   margin-top: 50px;
 }
+.progressLoader {
+  margin-top: 50px;
+}
