@@ -108,6 +108,7 @@ const FilterOptions = () => {
             options={mediaTypesList}
             defaultValue={mediaTypesList[0]}
             onChange={(option) => handleOptionValue("mediaType", option)}
+            isSearchable={false}
           ></Select>
         </div>
         {genreList.length && (
@@ -121,6 +122,7 @@ const FilterOptions = () => {
               value={genre}
               onChange={(option) => handleOptionValue("genre", option)}
               isDisabled={category === MediaCategory.TRENDING}
+              isSearchable={false}
             ></Select>
           </div>
         )}
@@ -135,6 +137,7 @@ const FilterOptions = () => {
                 defaultValue={yearList[0]}
                 onChange={(option) => handleOptionValue("fromYear", option)}
                 isDisabled={category === MediaCategory.TRENDING}
+                isSearchable={false}
               ></Select>
             </div>
             <span className={styles.yearRangeDash}>-</span>
@@ -146,6 +149,7 @@ const FilterOptions = () => {
                 defaultValue={yearList[yearList.length - 1]}
                 onChange={(option) => handleOptionValue("toYear", option)}
                 isDisabled={category === MediaCategory.TRENDING}
+                isSearchable={false}
               ></Select>
             </div>
           </div>
