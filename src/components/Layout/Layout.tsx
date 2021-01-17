@@ -1,4 +1,4 @@
-import React, { CSSProperties, useEffect } from "react";
+import React, { CSSProperties } from "react";
 import styles from "./Layout.module.css";
 
 interface ComponentProps {
