@@ -41,7 +41,7 @@ const MediaContainer = () => {
       )}
       {isResolved && media?.list?.length === 0 && (
         <section className={styles.noMediaAvailable}>
-          <h1>No media content is available for the selected filters</h1>
+          <h1>No media content is available for the selected filters/query</h1>
         </section>
       )}
       {isLoading && (
