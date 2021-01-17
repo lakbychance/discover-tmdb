@@ -1,0 +1,4 @@
+.noMediaAvailable {
+  color: var(--color-primary-text);
+  margin-top: 50px;
+}

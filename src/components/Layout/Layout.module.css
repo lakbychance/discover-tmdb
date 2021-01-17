@@ -1,0 +1,22 @@
+.layout {
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  height: calc(100% - 80px);
+  overflow: auto;
+  margin-top: 50px;
+  width: 100%;
+}
+.noMediaAvailable {
+  color: var(--color-primary-text);
+}
+@media only screen and (max-width: 900px) {
+  .layout {
+    grid-template-columns: 50% 50%;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .layout {
+    grid-template-columns: 100%;
+  }
+}
