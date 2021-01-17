@@ -12,7 +12,6 @@ const MediaContainer = () => {
   const media = useSelector((state: AppRootState) => state.media);
   const dispatch = useDispatch();
   const { category, filter, status } = media;
-  const { mediaType } = filter;
   const isLoading = status === Status.PENDING;
   const isResolved = status === Status.RESOLVED;
   useEffect(() => {

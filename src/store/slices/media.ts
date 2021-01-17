@@ -10,7 +10,6 @@ import {
   TVSortQueryMap,
 } from "config/constants";
 import { GenreForState, MediaItem } from "config/interface";
-import StateManager from "react-select";
 
 interface FilterState {
   genre: GenreForState;
