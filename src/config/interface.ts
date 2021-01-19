@@ -7,6 +7,7 @@ export interface GenreFromResponse {
   name: string;
 }
 export interface MediaItem {
+  id: number;
   poster_path: string;
   original_title: string;
   original_name: string;

@@ -28,6 +28,7 @@ const MediaContainer = () => {
               : "";
             return (
               <MediaCard
+                key={mediaItem.id}
                 src={imagePath}
                 title={
                   mediaItem.original_title ??
