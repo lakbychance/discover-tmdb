@@ -287,10 +287,48 @@ export const yearRangeMovies = [
   },
 ];
 
+export const fourStarRatedMovies = [
+  {
+    adult: false,
+    backdrop_path: "/yR27bZPIkNhpGEIP3jKV2EifTgo.jpg",
+    genre_ids: [16, 10751],
+    id: 755812,
+    original_language: "fr",
+    original_title: "Miraculous World: New York, United HeroeZ",
+    overview:
+      "During a school field trip, Ladybug and Cat Noir meet the American superheroes, whom they have to save from an akumatised super-villain. They discover that Miraculous exist in the United States too.",
+    popularity: 1439.252,
+    poster_path: "/kIHgjAkuzvKBnmdstpBOo4AfZah.jpg",
+    release_date: "2020-10-10",
+    title: "Miraculous World: New York, United HeroeZ",
+    video: false,
+    vote_average: 8.5,
+    vote_count: 281,
+  },
+  {
+    adult: false,
+    backdrop_path: "/9guoVF7zayiiUq5ulKQpt375VIy.jpg",
+    genre_ids: [16, 28, 14, 12],
+    id: 592350,
+    original_language: "ja",
+    original_title: "僕のヒーローアカデミア THE MOVIE ヒーローズ：ライジング",
+    overview:
+      "Class 1-A visits Nabu Island where they finally get to do some real hero work. The place is so peaceful that it's more like a vacation … until they're attacked by a villain with an unfathomable Quirk! His power is eerily familiar, and it looks like Shigaraki had a hand in the plan. But with All Might retired and citizens' lives on the line, there's no time for questions. Deku and his friends are the next generation of heroes, and they're the island's only hope.",
+    popularity: 451.018,
+    poster_path: "/zGVbrulkupqpbwgiNedkJPyQum4.jpg",
+    release_date: "2019-12-20",
+    title: "My Hero Academia: Heroes Rising",
+    video: false,
+    vote_average: 8.4,
+    vote_count: 578,
+  },
+];
+
 export const movieCategoriesMap = new Map([
   ["popularity.desc", popularMovies],
   ["release_date.desc", newestMovies],
   ["vote_average.desc", topratedMovies],
   ["16", animationMovies],
   ["2000-01-01", yearRangeMovies],
+  ["8", fourStarRatedMovies],
 ]);

@@ -88,4 +88,13 @@ describe("renders Discover App for movies ", () => {
     const movie = await waitFor(() => getByText("The Homesman"));
     expect(movie).toBeInTheDocument();
   });
+  test("With Rating selected", async () => {
+    const { getByText } = renderWithRedux(<App />, { initialState });
+    const rating = await waitFor(() => getByText("4 Stars"));
+    if (rating.parentElement) fireEvent.click(rating.parentElement);
+    const movie = await waitFor(() =>
+      getByText("Miraculous World: New York, United HeroeZ")
+    );
+    expect(movie).toBeInTheDocument();
+  });
 });

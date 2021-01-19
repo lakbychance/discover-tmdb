@@ -9,8 +9,10 @@ export const handlers = [
     movieKey = req.url.searchParams.get("sort_by");
     const withGenre = req.url.searchParams.get("with_genres");
     const fromReleaseDate = req.url.searchParams.get("release_date.gte");
+    const rating = req.url.searchParams.get("vote_average.gte");
     if (withGenre) movieKey = withGenre;
     if (fromReleaseDate === "2000-01-01") movieKey = fromReleaseDate;
+    if (rating === "8") movieKey = rating;
     return res(
       ctx.status(200),
       ctx.json({
