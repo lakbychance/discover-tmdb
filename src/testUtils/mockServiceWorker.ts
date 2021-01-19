@@ -1,10 +1,14 @@
 import { rest } from "msw";
 import { setupServer } from "msw/node";
-import { GenreFromResponse, MediaItem } from "config/interface";
-import { movieCategoriesMap, movieGenres, trendingMovies } from "./data";
+import {
+  movieCategoriesMap,
+  movieGenres,
+  trendingMovies,
+} from "./data/movieData";
+import { searchMedia } from "./data/searchData";
 
 export const handlers = [
-  rest.get(`https://api.themoviedb.org/3/discover/movie`, (req, res, ctx) => {
+  rest.get("https://api.themoviedb.org/3/discover/movie", (req, res, ctx) => {
     let movieKey;
     movieKey = req.url.searchParams.get("sort_by");
     const withGenre = req.url.searchParams.get("with_genres");
@@ -21,7 +25,7 @@ export const handlers = [
     );
   }),
   rest.get(
-    `https://api.themoviedb.org/3/trending/movie/day`,
+    "https://api.themoviedb.org/3/trending/movie/day",
     (req, res, ctx) => {
       return res(
         ctx.status(200),
@@ -31,11 +35,19 @@ export const handlers = [
       );
     }
   ),
-  rest.get(`https://api.themoviedb.org/3/genre/movie/list`, (req, res, ctx) => {
+  rest.get("https://api.themoviedb.org/3/genre/movie/list", (req, res, ctx) => {
     return res(
       ctx.status(200),
       ctx.json({
         genres: movieGenres,
+      })
+    );
+  }),
+  rest.get("https://api.themoviedb.org/3/search/multi", (req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json({
+        results: searchMedia,
       })
     );
   }),

@@ -1,5 +1,9 @@
 import React from "react";
-import { fireEvent, waitFor } from "@testing-library/react";
+import {
+  fireEvent,
+  getAllByPlaceholderText,
+  waitFor,
+} from "@testing-library/react";
 import App from "./App";
 import { renderWithRedux } from "testUtils/utility";
 import { MediaCategory, Status } from "config/constants";
@@ -32,10 +36,7 @@ describe("renders Discover App for movies ", () => {
     const { getByText } = renderWithRedux(<App />, { initialState });
     const category = await waitFor(() => getByText(MediaCategory.TRENDING));
     fireEvent.click(category);
-    const { className } = await waitFor(() =>
-      getByText(MediaCategory.TRENDING)
-    );
-    expect(className).toContain("activeCategory");
+    expect(category.className).toContain("activeCategory");
     const movie = await waitFor(() => getByText("Outside the Wire"));
     expect(movie).toBeInTheDocument();
   });
@@ -43,8 +44,7 @@ describe("renders Discover App for movies ", () => {
     const { getByText } = renderWithRedux(<App />, { initialState });
     const category = await waitFor(() => getByText(MediaCategory.NEWEST));
     fireEvent.click(category);
-    const { className } = await waitFor(() => getByText(MediaCategory.NEWEST));
-    expect(className).toContain("activeCategory");
+    expect(category.className).toContain("activeCategory");
     const movie = await waitFor(() => getByText("Purple Matter"));
     expect(movie).toBeInTheDocument();
   });
@@ -52,8 +52,7 @@ describe("renders Discover App for movies ", () => {
     const { getByText } = renderWithRedux(<App />, { initialState });
     const category = await waitFor(() => getByText(MediaCategory.NEWEST));
     fireEvent.click(category);
-    const { className } = await waitFor(() => getByText(MediaCategory.NEWEST));
-    expect(className).toContain("activeCategory");
+    expect(category.className).toContain("activeCategory");
     const movie = await waitFor(() => getByText("Purple Matter"));
     expect(movie).toBeInTheDocument();
   });
@@ -61,10 +60,7 @@ describe("renders Discover App for movies ", () => {
     const { getByText } = renderWithRedux(<App />, { initialState });
     const category = await waitFor(() => getByText(MediaCategory.TOPRATED));
     fireEvent.click(category);
-    const { className } = await waitFor(() =>
-      getByText(MediaCategory.TOPRATED)
-    );
-    expect(className).toContain("activeCategory");
+    expect(category.className).toContain("activeCategory");
     const movie = await waitFor(() => getByText("Sachertorte"));
     expect(movie).toBeInTheDocument();
   });
@@ -97,4 +93,15 @@ describe("renders Discover App for movies ", () => {
     );
     expect(movie).toBeInTheDocument();
   });
+});
+
+test("renders Discover App with search query results  ", async () => {
+  const { getByPlaceholderText, getByText } = renderWithRedux(<App />, {
+    initialState,
+  });
+  const search = await waitFor(() => getByPlaceholderText("Search..."));
+  fireEvent.change(search, { target: { value: "Dragon Ball Z" } });
+  fireEvent.keyDown(search, { key: "Enter" });
+  const movie = await waitFor(() => getByText("Dragon Ball Z: The Real 4-D"));
+  expect(movie).toBeInTheDocument();
 });
