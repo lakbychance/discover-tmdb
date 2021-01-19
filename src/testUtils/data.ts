@@ -140,3 +140,157 @@ export const trendingMovies = [
     media_type: "movie",
   },
 ];
+
+export const newestMovies = [
+  {
+    adult: false,
+    backdrop_path: "/vtBrWRKNLZVlv7mMlNTDzCmdMph.jpg",
+    genre_ids: [27],
+    id: 787318,
+    original_language: "it",
+    original_title: "Morire per capire",
+    overview:
+      "Jack is kidnapped by a mysterious man he calls himself, the black man. he is kidnapped and tortured to death. a triller played by Franktheshow",
+    popularity: 1.4,
+    poster_path: "/pFPBUJchQ2UM1Te1b5QtjY1MMww.jpg",
+    release_date: "2021-01-01",
+    title: "Morire per capire",
+    video: false,
+    vote_average: 8,
+    vote_count: 1,
+  },
+  {
+    adult: false,
+    backdrop_path: null,
+    genre_ids: [18, 10749],
+    id: 787100,
+    original_language: "en",
+    original_title: "Purple Matter",
+    overview:
+      "A stroll through a young, queer, Black woman’s subconscious as she deals with the grief of her deceased mother, love and a never ending night of dreams.",
+    popularity: 1.732,
+    poster_path: "/aY3cJeU9LN0iq5T4Gu18Zu9FVen.jpg",
+    release_date: "2021-01-01",
+    title: "Purple Matter",
+    video: false,
+    vote_average: 0,
+    vote_count: 0,
+  },
+];
+
+export const topratedMovies = [
+  {
+    adult: false,
+    backdrop_path: null,
+    genre_ids: [],
+    id: 787640,
+    original_language: "it",
+    original_title: "Sachertorte",
+    overview: "",
+    popularity: 0,
+    poster_path: "/x4SQ3wPice73IOvvd8f5B4X1kR8.jpg",
+    release_date: "",
+    title: "Sachertorte",
+    video: false,
+    vote_average: 0,
+    vote_count: 0,
+  },
+  {
+    adult: false,
+    backdrop_path: "/5EEquek5f4DfjRnYKMHJbSgdt06.jpg",
+    genre_ids: [35, 18, 9648, 878],
+    id: 787537,
+    original_language: "es",
+    original_title: "La Tóxica",
+    overview:
+      "During a video call, two friends remember the ex of one of them. It won't take long for the memories to materialize.",
+    popularity: 0,
+    poster_path: "/19UgwVhDB8ibOV4swRNcFHNRSeL.jpg",
+    release_date: "2020-10-15",
+    title: "The Toxic Girl",
+    video: false,
+    vote_average: 0,
+    vote_count: 0,
+  },
+];
+
+export const animationMovies = [
+  {
+    adult: false,
+    backdrop_path: "/kf456ZqeC45XTvo6W9pW5clYKfQ.jpg",
+    genre_ids: [16, 35, 18, 10402, 14],
+    id: 508442,
+    original_language: "en",
+    original_title: "Soul",
+    overview:
+      "Joe Gardner is a middle school teacher with a love for jazz music. After a successful gig at the Half Note Club, he suddenly gets into an accident that separates his soul from his body and is transported to the You Seminar, a center in which souls develop and gain passions before being transported to a newborn child. Joe must enlist help from the other souls-in-training, like 22, a soul who has spent eons in the You Seminar, in order to get back to Earth.",
+    popularity: 2929.547,
+    poster_path: "/hm58Jw4Lw8OIeECIq5qyPYhAeRJ.jpg",
+    release_date: "2020-12-25",
+    title: "Soul",
+    video: false,
+    vote_average: 8.3,
+    vote_count: 3753,
+  },
+  {
+    adult: false,
+    backdrop_path: "/yR27bZPIkNhpGEIP3jKV2EifTgo.jpg",
+    genre_ids: [16, 10751],
+    id: 755812,
+    original_language: "fr",
+    original_title: "Miraculous World: New York, United HeroeZ",
+    overview:
+      "During a school field trip, Ladybug and Cat Noir meet the American superheroes, whom they have to save from an akumatised super-villain. They discover that Miraculous exist in the United States too.",
+    popularity: 1439.252,
+    poster_path: "/kIHgjAkuzvKBnmdstpBOo4AfZah.jpg",
+    release_date: "2020-10-10",
+    title: "Miraculous World: New York, United HeroeZ",
+    video: false,
+    vote_average: 8.5,
+    vote_count: 281,
+  },
+];
+
+export const yearRangeMovies = [
+  {
+    adult: false,
+    backdrop_path: null,
+    genre_ids: [35, 878, 37],
+    id: 499437,
+    original_language: "en",
+    original_title: "Mosquito: A Fistful of Bitcoins",
+    overview: "Mosquito: A Fistful of Bitcoins",
+    popularity: 2.527,
+    poster_path: "/qSqgSp6CjMfdRrA3KZ7XamdmI0H.jpg",
+    release_date: "2015-01-01",
+    title: "Mosquito: A Fistful of Bitcoins",
+    video: false,
+    vote_average: 6.3,
+    vote_count: 3,
+  },
+  {
+    adult: false,
+    backdrop_path: "/71l8co8YmG7ly8PElDXlpcv6yTS.jpg",
+    genre_ids: [18, 37],
+    id: 264656,
+    original_language: "en",
+    original_title: "The Homesman",
+    overview:
+      "When three women living on the edge of the American frontier are driven mad by harsh pioneer life, the task of saving them falls to the pious, independent-minded Mary Bee Cuddy. Transporting the women by covered wagon to Iowa, she soon realizes just how daunting the journey will be, and employs a low-life drifter, George Briggs, to join her. The unlikely pair and the three women head east, where a waiting minister and his wife have offered to take the women in. But the group first must traverse the harsh Nebraska Territories marked by stark beauty, psychological peril and constant threat.",
+    popularity: 9.7,
+    poster_path: "/clUQKqLavTQ3lBIICAla9MfkRO5.jpg",
+    release_date: "2014-05-18",
+    title: "The Homesman",
+    video: false,
+    vote_average: 6.5,
+    vote_count: 531,
+  },
+];
+
+export const movieCategoriesMap = new Map([
+  ["popularity.desc", popularMovies],
+  ["release_date.desc", newestMovies],
+  ["vote_average.desc", topratedMovies],
+  ["16", animationMovies],
+  ["2000-01-01", yearRangeMovies],
+]);

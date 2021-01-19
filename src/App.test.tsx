@@ -30,15 +30,62 @@ describe("renders Discover App for movies ", () => {
   });
   test("With Trending category selected", async () => {
     const { getByText } = renderWithRedux(<App />, { initialState });
-    const trendingElement = await waitFor(() =>
-      getByText(MediaCategory.TRENDING)
-    );
-    fireEvent.click(trendingElement);
+    const category = await waitFor(() => getByText(MediaCategory.TRENDING));
+    fireEvent.click(category);
     const { className } = await waitFor(() =>
       getByText(MediaCategory.TRENDING)
     );
     expect(className).toContain("activeCategory");
     const movie = await waitFor(() => getByText("Outside the Wire"));
+    expect(movie).toBeInTheDocument();
+  });
+  test("With Newest category selected", async () => {
+    const { getByText } = renderWithRedux(<App />, { initialState });
+    const category = await waitFor(() => getByText(MediaCategory.NEWEST));
+    fireEvent.click(category);
+    const { className } = await waitFor(() => getByText(MediaCategory.NEWEST));
+    expect(className).toContain("activeCategory");
+    const movie = await waitFor(() => getByText("Purple Matter"));
+    expect(movie).toBeInTheDocument();
+  });
+  test("With Newest category selected", async () => {
+    const { getByText } = renderWithRedux(<App />, { initialState });
+    const category = await waitFor(() => getByText(MediaCategory.NEWEST));
+    fireEvent.click(category);
+    const { className } = await waitFor(() => getByText(MediaCategory.NEWEST));
+    expect(className).toContain("activeCategory");
+    const movie = await waitFor(() => getByText("Purple Matter"));
+    expect(movie).toBeInTheDocument();
+  });
+  test("With Top Rated category selected", async () => {
+    const { getByText } = renderWithRedux(<App />, { initialState });
+    const category = await waitFor(() => getByText(MediaCategory.TOPRATED));
+    fireEvent.click(category);
+    const { className } = await waitFor(() =>
+      getByText(MediaCategory.TOPRATED)
+    );
+    expect(className).toContain("activeCategory");
+    const movie = await waitFor(() => getByText("Sachertorte"));
+    expect(movie).toBeInTheDocument();
+  });
+  test("With Animation genre selected", async () => {
+    const { getByText } = renderWithRedux(<App />, { initialState });
+    const selectedGenre = await waitFor(() => getByText("All"));
+    fireEvent.focus(selectedGenre);
+    fireEvent.keyDown(selectedGenre, { key: "ArrowDown" });
+    const genreToUpdate = await waitFor(() => getByText("Animation"));
+    fireEvent.click(genreToUpdate);
+    const movie = await waitFor(() => getByText("Soul"));
+    expect(movie).toBeInTheDocument();
+  });
+  test("With From Year selected", async () => {
+    const { getByText } = renderWithRedux(<App />, { initialState });
+    const selectedFromYear = await waitFor(() => getByText("1900"));
+    fireEvent.focus(selectedFromYear);
+    fireEvent.keyDown(selectedFromYear, { key: "ArrowDown" });
+    const fromYearToUpdate = await waitFor(() => getByText("2000"));
+    fireEvent.click(fromYearToUpdate);
+    const movie = await waitFor(() => getByText("The Homesman"));
     expect(movie).toBeInTheDocument();
   });
 });
