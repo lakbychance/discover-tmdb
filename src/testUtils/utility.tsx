@@ -1,12 +1,13 @@
 import { configureStore, createStore } from "@reduxjs/toolkit";
 import { render } from "@testing-library/react";
 import { Provider } from "react-redux";
+import { AppRootState } from "store";
 import mediaReducer from "../store/slices/media";
 
 export const renderWithRedux = (
-  ui: any,
+  ui: React.ReactElement,
   options: {
-    initialState: any;
+    initialState: AppRootState;
   }
 ) => {
   const store = configureStore({
