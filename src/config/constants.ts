@@ -5,6 +5,7 @@ export enum MediaCategory {
   TRENDING = "TRENDING",
   NEWEST = "NEWEST",
   TOPRATED = "TOP RATED",
+  OTHER = "Other",
 }
 
 export const MovieSortQueryMap: QueryMap = {

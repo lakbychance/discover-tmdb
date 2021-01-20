@@ -24,11 +24,13 @@ const initialState: AppRootState = {
   },
 };
 
+const activeMediaCategoryClass = "mediaCategory activeCategory";
+
 describe("renders Discover App for movies ", () => {
   test("With Popular category selected", async () => {
     const { getByText } = renderWithRedux(<App />, { initialState });
-    const { className } = await waitFor(() => getByText(MediaCategory.POPULAR));
-    expect(className).toContain("activeCategory");
+    const category = await waitFor(() => getByText(MediaCategory.POPULAR));
+    expect(category).toHaveClass(activeMediaCategoryClass);
     const movie = await waitFor(() => getByText("Wonder Woman 1984"));
     expect(movie).toBeInTheDocument();
   });
@@ -36,7 +38,7 @@ describe("renders Discover App for movies ", () => {
     const { getByText } = renderWithRedux(<App />, { initialState });
     const category = await waitFor(() => getByText(MediaCategory.TRENDING));
     fireEvent.click(category);
-    expect(category.className).toContain("activeCategory");
+    expect(category).toHaveClass(activeMediaCategoryClass);
     const movie = await waitFor(() => getByText("Outside the Wire"));
     expect(movie).toBeInTheDocument();
   });
@@ -44,7 +46,7 @@ describe("renders Discover App for movies ", () => {
     const { getByText } = renderWithRedux(<App />, { initialState });
     const category = await waitFor(() => getByText(MediaCategory.NEWEST));
     fireEvent.click(category);
-    expect(category.className).toContain("activeCategory");
+    expect(category).toHaveClass(activeMediaCategoryClass);
     const movie = await waitFor(() => getByText("Purple Matter"));
     expect(movie).toBeInTheDocument();
   });
@@ -52,7 +54,7 @@ describe("renders Discover App for movies ", () => {
     const { getByText } = renderWithRedux(<App />, { initialState });
     const category = await waitFor(() => getByText(MediaCategory.NEWEST));
     fireEvent.click(category);
-    expect(category.className).toContain("activeCategory");
+    expect(category).toHaveClass(activeMediaCategoryClass);
     const movie = await waitFor(() => getByText("Purple Matter"));
     expect(movie).toBeInTheDocument();
   });
@@ -60,7 +62,7 @@ describe("renders Discover App for movies ", () => {
     const { getByText } = renderWithRedux(<App />, { initialState });
     const category = await waitFor(() => getByText(MediaCategory.TOPRATED));
     fireEvent.click(category);
-    expect(category.className).toContain("activeCategory");
+    expect(category).toHaveClass(activeMediaCategoryClass);
     const movie = await waitFor(() => getByText("Sachertorte"));
     expect(movie).toBeInTheDocument();
   });
@@ -103,5 +105,7 @@ test("renders Discover App with search query results  ", async () => {
   fireEvent.change(search, { target: { value: "Dragon Ball Z" } });
   fireEvent.keyDown(search, { key: "Enter" });
   const movie = await waitFor(() => getByText("Dragon Ball Z: The Real 4-D"));
+  const category = await waitFor(() => getByText(MediaCategory.POPULAR));
+  expect(category.classList.contains(activeMediaCategoryClass)).toBe(false);
   expect(movie).toBeInTheDocument();
 });

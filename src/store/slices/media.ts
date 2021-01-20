@@ -100,6 +100,7 @@ export const fetchMedia = () => (
 
 export const fetchMediaByQuery = (query: string) => (dispatch: Dispatch) => {
   const queryUrl = `${QUERY_ENDPOINT}/?api_key=${process.env.REACT_APP_API_KEY}&query=${query}`;
+  dispatch(setCategory(MediaCategory.OTHER));
   dispatch(setStatus(Status.PENDING));
   axios.get(queryUrl).then(({ data }) => {
     dispatch(setStatus(Status.RESOLVED));

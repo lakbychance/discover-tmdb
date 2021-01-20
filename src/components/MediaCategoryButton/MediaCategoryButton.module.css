@@ -5,6 +5,9 @@
   cursor: pointer;
   font-weight: bold;
 }
+.mediaCategory:hover {
+  color: var(--color-secondary-text);
+}
 .activeCategory {
   color: var(--color-secondary-text);
 }

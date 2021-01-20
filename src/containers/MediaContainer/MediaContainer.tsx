@@ -5,7 +5,7 @@ import { MediaItem } from "config/interface";
 import { AppRootState } from "store";
 import { fetchMedia } from "store/slices/media";
 import styles from "./MediaContainer.module.css";
-import { IMAGE_ENDPOINT, Status } from "config/constants";
+import { IMAGE_ENDPOINT, MediaCategory, Status } from "config/constants";
 import { LinearProgress } from "@material-ui/core";
 
 const MediaContainer = () => {
@@ -15,7 +15,9 @@ const MediaContainer = () => {
   const isLoading = status === Status.PENDING;
   const isResolved = status === Status.RESOLVED;
   useEffect(() => {
-    dispatch(fetchMedia());
+    if (category !== MediaCategory.OTHER) {
+      dispatch(fetchMedia());
+    }
   }, [category, filter, dispatch]);
 
   return (
