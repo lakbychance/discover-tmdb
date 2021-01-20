@@ -33,7 +33,7 @@ const Search = () => {
   };
 
   const searchQuery = () => {
-    dispatch(fetchMediaByQuery(query));
+    query && dispatch(fetchMediaByQuery(query));
   };
 
   return (
