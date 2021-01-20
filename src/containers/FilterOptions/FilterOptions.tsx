@@ -58,6 +58,8 @@ const FilterOptions = () => {
   const dispatch = useDispatch();
   const { category, filter } = media;
   const { genre, mediaType, rating } = filter;
+  const shouldDisableFilterOptions =
+    category === MediaCategory.TRENDING || category === MediaCategory.OTHER;
 
   const handleOptionValue = useCallback(
     (
@@ -109,6 +111,7 @@ const FilterOptions = () => {
             defaultValue={mediaTypesList[0]}
             onChange={(option) => handleOptionValue("mediaType", option)}
             isSearchable={false}
+            isDisabled={category === MediaCategory.OTHER}
           ></Select>
         </div>
         {genreList.length && (
@@ -121,7 +124,7 @@ const FilterOptions = () => {
               defaultValue={genre}
               value={genre}
               onChange={(option) => handleOptionValue("genre", option)}
-              isDisabled={category === MediaCategory.TRENDING}
+              isDisabled={shouldDisableFilterOptions}
               isSearchable={false}
             ></Select>
           </div>
@@ -136,7 +139,7 @@ const FilterOptions = () => {
                 options={yearList}
                 defaultValue={yearList[0]}
                 onChange={(option) => handleOptionValue("fromYear", option)}
-                isDisabled={category === MediaCategory.TRENDING}
+                isDisabled={shouldDisableFilterOptions}
                 isSearchable={false}
               ></Select>
             </div>
@@ -148,7 +151,7 @@ const FilterOptions = () => {
                 options={yearList}
                 defaultValue={yearList[yearList.length - 1]}
                 onChange={(option) => handleOptionValue("toYear", option)}
-                isDisabled={category === MediaCategory.TRENDING}
+                isDisabled={shouldDisableFilterOptions}
                 isSearchable={false}
               ></Select>
             </div>
@@ -163,7 +166,7 @@ const FilterOptions = () => {
           const rating = newValue && newValue * 2;
           dispatch(setFilter({ rating }));
         }}
-        disabled={category === MediaCategory.TRENDING}
+        disabled={shouldDisableFilterOptions}
       />
     </div>
   );
