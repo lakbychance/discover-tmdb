@@ -14,5 +14,5 @@ export const renderWithRedux = (
     preloadedState: options.initialState,
     reducer: { media: mediaReducer },
   });
-  return { ...render(<Provider store={store}>{ui}</Provider>), store };
+  return render(<Provider store={store}>{ui}</Provider>);
 };
