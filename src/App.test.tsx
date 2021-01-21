@@ -1,7 +1,6 @@
 import React from "react";
 import {
   fireEvent,
-  getAllByPlaceholderText,
   waitFor,
 } from "@testing-library/react";
 import App from "./App";
