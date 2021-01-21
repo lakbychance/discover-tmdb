@@ -20,7 +20,7 @@ interface FilterState {
 }
 
 interface MediaState {
-  category: string;
+  category: MediaCategory;
   filter: FilterState;
   list: MediaItem[];
   status: Status;
